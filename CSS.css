@@ -1,0 +1,118 @@
+* {
+	font-family: Tahoma;
+}
+p, legend {
+	font-size: 14px;
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+h3 {
+	font-size: 14px;
+	
+	margin-top: 0.5em;
+	margin-bottom: 0.1em;
+}
+body {
+	background: no-repeat fixed center url(./img/background.jpg);
+	background-size: cover;
+}
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.container {
+	width: 1170px;
+	margin: 30px auto;
+	border: 1px solid #000000;
+	border-radius: 3px;
+	box-shadow: 1px 1px 5px 2px #aaaaaa;
+	min-height: 200px;
+	padding: 5px;
+
+}
+.device-selection {
+	width: 50%;
+	margin: 10px auto;
+	padding: 10px 20px;
+}
+.row {
+	position: relative;
+	padding: 5px 30px;	
+	background-color: #e298dc;
+}
+.row input, .row select {
+	position: absolute;	
+	left: 45%;
+	width: 45%;
+
+}
+.btn-big, [data-size='btn-big'] {
+	display: block;
+	width: 200px;
+	margin: 5px auto;
+	background-color: #e298dc;
+}
+.btn-big:hover, [data-size='btn-big']:hover {
+	border: 2px solid  #3B5998;
+	box-sizing: border-box;
+}
+.column {
+	width: 24%;
+	border: 1px solid #000000;
+	border-radius: 3px;
+	box-shadow: 1px 1px 2px 2px #cccccc;
+	min-height: 50px;
+	float: left;
+	margin-left: 0.5em;
+	background-color: #2c3d90eb;
+}
+.column h2 {
+	font-size: 16px;
+	text-align: center;
+}
+.device {
+	margin: 2px;
+	margin-top: 10px;
+	border: 1px solid #000000;
+	border-radius: 3px;
+	background-color: #FFF7C4;
+}
+.info {
+	margin: 3px;
+	padding: 0 2px;
+	min-height: 100px;
+	
+	
+}
+.control {
+	background-color: #e836e257;
+	margin: 3px;
+	padding: 3px 2px;
+	border: 2px solid #087a21;
+	border-radius: 3px;
+}
+.deviceOff:after {
+	display: inline-block;
+	text-align: center;
+	color: #ffffff;
+	font-weight: bold;
+	width: 45%;
+	line-height: 1.5em;
+	content: 'Выключено';
+	background-color: #ff0000;
+	border-radius: 3px;
+	border: 1px solid #000000;
+}
+.deviceOn:after {
+	display: inline-block;
+	text-align: center;
+	color: #ffffff;
+	font-weight: bold;
+	width: 45%;
+	line-height: 1.5em;
+	content: 'Включено';
+	background-color: #087a21;
+	border-radius: 3px;
+	border: 1px solid #000000;
+}
