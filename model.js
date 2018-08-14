@@ -9,8 +9,8 @@ function Device (type, name) {
 	this._name = name;
 	this._state = false;
 	this._basicFeature;
-	this._maxFeatureValue;
-	this._userFeatureValue;
+	this._maxValue;
+	this._userValue;
 };
 Device.prototype.on = function () {
 	this._state = true;
@@ -19,24 +19,24 @@ Device.prototype.off = function () {
 	this._state = false;
 };
 Device.prototype.increase = function () {
-	if (this._basicFeature < this._maxFeatureValue) {
+	if (this._basicFeature < this._maxValue) {
 		this._basicFeature = this._basicFeature + 1;
 	}
 };
 Device.prototype.decrease = function () {
-	if (this._basicFeature > this._minFeatureValue) {
+	if (this._basicFeature > this._minValue) {
 		this._basicFeature = this._basicFeature - 1;
 	}
 };
 Device.prototype.setMax = function () {
-	this._basicFeature = this._maxFeatureValue;
+	this._basicFeature = this._maxValue;
 };
 Device.prototype.setMin = function () {
-	this._basicFeature = this._minFeatureValue;
+	this._basicFeature = this._minValue;
 };
 Device.prototype.setValue = function () {
-	if (this._userFeatureValue >= this._minFeatureValue && this._userFeatureValue <= this._maxFeatureValue) {
-		this._basicFeature = this._userFeatureValue;
+	if (this._userValue >= this._minValue && this._userValue <= this._maxValue) {
+		this._basicFeature = this._userValue;
 	} else {
 		this._basicFeature = this._basicFeature;
 	}
@@ -57,33 +57,33 @@ TemperatureUnit.prototype = Object.create(Device.prototype);
 TemperatureUnit.prototype.constructor = TemperatureUnit;
 TemperatureUnit.prototype.temperatureIncrease = function () {
 	this._operation._basicFeature = this._temperature;
-	this._operation._maxFeatureValue = this._maxTemperature;
+	this._operation._maxValue = this._maxTemperature;
 	this._operation.increase();
 	this._temperature = this._operation._basicFeature;
 };
 TemperatureUnit.prototype.temperatureDecrease = function () {
 	this._operation._basicFeature = this._temperature;
-	this._operation._maxFeatureValue = this._minTemperature;
+	this._operation._maxValue = this._minTemperature;
 	this._operation.decrease();
 	this._temperature = this._operation._basicFeature;
 };
 TemperatureUnit.prototype.temperatureSetMax = function () {
 	this._operation._basicFeature = this._temperature;
-	this._operation._maxFeatureValue = this._maxTemperature;
+	this._operation._maxValue = this._maxTemperature;
 	this._operation.setMax();
 	this._temperature = this._operation._basicFeature;
 };
 TemperatureUnit.prototype.temperatureSetMin = function () {
 	this._operation._basicFeature = this._temperature;
-	this._operation._minFeatureValue = this._minTemperature;
+	this._operation._minValue = this._minTemperature;
 	this._operation.setMin();
 	this._temperature = this._operation._basicFeature;
 };
 TemperatureUnit.prototype.temperatureSetValue = function (temperatureValue) {
 	this._operation._basicFeature = this._temperature;
-	this._operation._minFeatureValue = this._minTemperature;
-	this._operation._maxFeatureValue = this._maxTemperature;
-	this._operation._userFeatureValue = Number(temperatureValue);
+	this._operation._minValue = this._minTemperature;
+	this._operation._maxValue = this._maxTemperature;
+	this._operation._userValue = Number(temperatureValue);
 	this._operation.setValue();
 	this._temperature = this._operation._basicFeature;
 };
@@ -136,33 +136,33 @@ Lamp.prototype = Object.create(Device.prototype);
 Lamp.prototype.constructor = Lamp;
 Lamp.prototype.lightIncrease = function () {
 	this._operation._basicFeature = this._light;
-	this._operation._maxFeatureValue = this._maxLight;
+	this._operation._maxValue = this._maxLight;
 	this._operation.increase();
 	this._light = this._operation._basicFeature;
 };
 Lamp.prototype.lightDecrease = function () {
 	this._operation._basicFeature = this._light;
-	this._operation._minFeatureValue = this._minLight;
+	this._operation._minValue = this._minLight;
 	this._operation.decrease();
 	this._light = this._operation._basicFeature;
 };
 Lamp.prototype.lightSetMax = function () {
 	this._operation._basicFeature = this._light;
-	this._operation._maxFeatureValue = this._maxLight;
+	this._operation._maxValue = this._maxLight;
 	this._operation.setMax();
 	this._light = this._operation._basicFeature;
 };
 Lamp.prototype.lightSetMin = function () {
 	this._operation._basicFeature = this._light;
-	this._operation._minFeatureValue = this._minLight;
+	this._operation._minValue = this._minLight;
 	this._operation.setMin();
 	this._light = this._operation._basicFeature;
 };
 Lamp.prototype.lightSetValue = function (lightValue) {
 	this._operation._basicFeature = this._light;
-	this._operation._minFeatureValue = this._minLight;
-	this._operation._maxFeatureValue = this._maxLight;
-	this._operation._userFeatureValue = Number(lightValue);
+	this._operation._minValue = this._minLight;
+	this._operation._maxValue = this._maxLight;
+	this._operation._userValue = Number(lightValue);
 	this._operation.setValue();
 	this._light = this._operation._basicFeature;
 };
@@ -185,65 +185,65 @@ TvDevice.prototype = Object.create(Device.prototype);
 TvDevice.prototype.constructor = TvDevice;
 TvDevice.prototype.volumeIncrease = function () {
 	this._operation._basicFeature = this._volume;
-	this._operation._maxFeatureValue = this._maxVolume;
+	this._operation._maxValue = this._maxVolume;
 	this._operation.increase();
 	this._volume = this._operation._basicFeature;
 };
 TvDevice.prototype.volumeDecrease = function () {
 	this._operation._basicFeature = this._volume;
-	this._operation._minFeatureValue = this._minVolume;
+	this._operation._minValue = this._minVolume;
 	this._operation.decrease();
 	this._volume = this._operation._basicFeature;
 };
 TvDevice.prototype.volumeSetMax = function () {
 	this._operation._basicFeature = this._volume;
-	this._operation._maxFeatureValue = this._maxVolume;
+	this._operation._maxValue = this._maxVolume;
 	this._operation.setMax();
 	this._volume = this._operation._basicFeature;
 };
 TvDevice.prototype.volumeSetMin = function () {
 	this._operation._basicFeature = this._volume;
-	this._operation._minFeatureValue = this._minVolume;
+	this._operation._minValue = this._minVolume;
 	this._operation.setMin();
 	this._volume = this._operation._basicFeature;
 };
 TvDevice.prototype.volumeSetValue = function (volumeValue) {
 	this._operation._basicFeature = this._volume;
-	this._operation._minFeatureValue = this._minVolume;
-	this._operation._maxFeatureValue = this._maxVolume;
-	this._operation._userFeatureValue = Number(volumeValue);
+	this._operation._minValue = this._minVolume;
+	this._operation._maxValue = this._maxVolume;
+	this._operation._userValue = Number(volumeValue);
 	this._operation.setValue();
 	this._volume = this._operation._basicFeature;
 };
 TvDevice.prototype.nextChannel = function () {
 	this._operation._basicFeature = this._channel;
-	this._operation._maxFeatureValue = this._maxChannel;
+	this._operation._maxValue = this._maxChannel;
 	this._operation.increase();
 	this._channel = this._operation._basicFeature;
 };
 TvDevice.prototype.prevChannel = function () {
 	this._operation._basicFeature = this._channel;
-	this._operation._minFeatureValue = this._minChannel;
+	this._operation._minValue = this._minChannel;
 	this._operation.decrease();
 	this._channel = this._operation._basicFeature;
 };
 TvDevice.prototype.lastChannel = function () {
 	this._operation._basicFeature = this._channel;
-	this._operation._maxFeatureValue = this._maxChannel;
+	this._operation._maxValue = this._maxChannel;
 	this._operation.setMax();
 	this._channel = this._operation._basicFeature;
 };
 TvDevice.prototype.firstChannel = function () {
 	this._operation._basicFeature = this._channel;
-	this._operation._minFeatureValue = this._minChannel;
+	this._operation._minValue = this._minChannel;
 	this._operation.setMin();
 	this._channel = this._operation._basicFeature;
 };
 TvDevice.prototype.setChannel = function (channel) {
 	this._operation._basicFeature = this._channel;
-	this._operation._minFeatureValue = this._minChannel;
-	this._operation._maxFeatureValue = this._maxChannel;
-	this._operation._userFeatureValue = Number(channel);
+	this._operation._minValue = this._minChannel;
+	this._operation._maxValue = this._maxChannel;
+	this._operation._userValue = Number(channel);
 	this._operation.setValue();
 	this._channel = this._operation._basicFeature;
 };
